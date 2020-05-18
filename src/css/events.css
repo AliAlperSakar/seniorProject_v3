@@ -1,0 +1,112 @@
+.coursemain{
+    background-color:#bfbfbf ;
+    width: 100%;
+    height:200px;
+    margin-top: 4%;
+    font-size: 40px;
+    color:white;
+    text-align: center;
+    -webkit-box-shadow: inset -2px 5px 12px -6px rgba(0,0,0,0.8);
+-moz-box-shadow: inset -2px 5px 12px -6px rgba(0,0,0,0.8);
+box-shadow: inset -2px 5px 12px -6px rgba(0,0,0,0.8);
+ 
+    
+}
+.maintext{
+    padding-top: 4%;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+
+.announcement{
+    margin:80px 20px;
+    text-align: center;
+    padding-bottom: 200px;
+}
+
+.table{
+    margin: 0px;
+    width: 50%;
+    float: left;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 200px;
+    margin: 200px;
+}
+
+
+.announceTable{
+    padding: 0px;
+    margin-top: 100px;
+    background-color: white;
+   
+}
+
+.specialtr{
+    /* display: inline-flex; */
+    width: 30%;
+    height: 50%;
+    margin-bottom: 20px;
+    display: inline-table;
+    padding-bottom: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: static;
+   
+}
+p.contentannounce
+{
+    text-align: justify;
+   
+    font-size: 15px;
+}
+.h3announce{
+    text-align: center;
+    
+}
+
+.specialtr:hover{
+    position: static;
+    display: inline-table;
+    width: 30%;
+    height: 50%;
+    background-color: whitesmoke;
+   
+    padding-bottom: 100px;
+
+}
+
+.specialtr figure{
+    margin:1em;
+}
+
+.specialtr img{
+    margin: 0px;
+    width: 80%;
+}
+
+.specialtr p{
+    padding: 10px;
+}
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.detail{
+    border: 2px whitesmoke solid;
+    float: right;
+    width: 49.9%;
+}

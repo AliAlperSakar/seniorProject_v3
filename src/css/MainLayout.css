@@ -1,0 +1,239 @@
+.megamenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #2d2a62;
+    -webkit-transition-duration: 0.15s;
+    transition-duration: 0.15s;
+    /* -webkit-transition-property: background; */
+    /* transition-property: background; */
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    opacity: 1;
+}
+
+
+
+.container {
+    display: flex;
+    height: 60px;
+    padding-left: 30px;
+    margin: auto;
+}
+
+.site-logo {
+    margin: 0 0 0 -5px;
+    padding: 0;
+    width: 80px;
+    /* background-color: whitesmoke; */
+    position: absolute;
+    top: 0%;
+    right: 0.5%;
+}
+
+.site-logo2 {
+    margin: 0 0 0 -5px;
+    padding: 0;
+    width: 303.4px;
+    /* background-color: whitesmoke; */
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border-top-right-radius: 20%;
+    border-bottom-right-radius: 20%;
+}
+
+.site-logo {
+    margin: 0 0 0 -5px;
+    padding: 0;
+    width: 60px;
+    /* background-color: whitesmoke; */
+    position: absolute;
+    top: 0%;
+    right: 0.5%;
+}
+
+.content {
+    /* display: flex; */
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    height: 100%;
+    /* border: 2px black solid; */
+}
+
+.container li{
+    display: flex;
+    padding-top: 20px;
+    height: 60px;
+    width: 100%;
+    margin-right: 50px;
+    padding-right: 20px;
+    padding-left: 20px;
+    text-align: center;
+}
+
+.container li:hover {
+    /* border: 2px solid white;*/
+    /* font-size: 15px; */
+    color:#76bfff;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.container a {
+    color: white;
+    font-size: 14px;
+}
+.container li a:hover{
+    color:#76bfff;
+    font-weight: 400;
+}
+
+.dropdiv{
+    position: fixed;
+    top: 60px;
+    min-width:15%;
+    background-color: #2d2a62;
+    display: list-item;
+    /* display: none; */
+    opacity: 0;
+    transition: 250ms all;
+    visibility: hidden;
+    z-index: 30;
+}
+
+ul.dropdown{
+    /* position: relative; */
+    /* display: block; */
+    /* padding: 0px 0px 0px 0px; */
+    text-align: center;
+    /* z-index: 3; */
+   
+}
+
+ul.dropdown li{
+    /* float: left; */
+    /* padding: 0px 0px 0px 0px; */
+    font-weight: 430;
+    
+    text-decoration:none;
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    /* text-align: center; */
+}
+
+
+ul.menu {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    font-size: large;
+    color: wheat;
+    list-style: none;
+    width: 80%;
+    /* margin-left:100px; */
+    /* margin-left: 10%; */
+}
+
+ul.dropdown li {
+    color: black;
+    text-align: center;
+}
+
+ul.dropdown li a{
+    color: white;
+    text-align: center;
+}
+ul.dropdown li a:hover{
+    color:#76bfff;
+    font-weight: 400;
+}
+ul.menu li:hover ul.dropdown{
+    position: static;
+    /* top: 50px; */
+    /* z-index: auto; */
+    display: block;
+}
+
+ul.menu li:hover .dropdiv{
+    /* display: block; */
+    color: white;
+    opacity: 1;
+    visibility: visible;
+    /* display: block; */
+}
+
+button.ui.button.myAccount{
+   
+ 
+    position: absolute;
+    margin-left: 65%;
+    /* height: 60px; */
+    
+    background-color: #2d2a62;
+    color:#76bfff;
+   margin-top: 0.5%;
+}
+button.ui.button.myAccount:hover{
+   
+ 
+    margin-top: 0.5%;
+    position: absolute;
+    margin-left: 65%;
+    /* height: 60px; */
+    color:white;
+    background-color: #2d2a62;
+ 
+   
+}
+
+
+a.myAccount:hover{
+ display:block;
+ color:#76bfff
+ 
+}
+
+.adminPanel ul:hover{
+    display: block;
+   
+}
+.adminPanel ul{
+    background-color: #2d2a62;
+    position: absolute;
+    display:block;
+    right: 86px;
+    top: 60px;
+    color: white;
+    z-index: 30;
+    margin-left: 0px;
+    padding: 1%;
+    margin-bottom: 0px;
+    text-align: center;
+    width:14%
+}
+
+
+.adminPanel li:hover{
+    color:#76bfff;
+    font-weight: 400;
+
+}
+
+.adminPanel li{
+    margin: 2px 0px;
+    text-align: center;
+    width: 100%;
+}
+
+.adminPanel li:hover{
+    width: 100%;
+    font-style: normal;
+}
+
+.myAccount:hover .adminPanel{
+    display: none;
+}
+

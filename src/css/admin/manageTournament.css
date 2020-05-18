@@ -1,0 +1,28 @@
+
+.mngannspecial{
+    display: inline-table;
+    border:1px solid;
+    height: 600px;
+    margin-bottom: 5%;
+    margin-left: 4%;
+    border-radius: 10px;
+}
+.ui.dropdown .menu>.item {
+    position:relative;
+    cursor:pointer;
+    display:block;
+    border:none;
+    height:auto;
+    text-align:left;
+    border-top:none;
+    line-height:1em;
+    color:rgba(0,0,0,.87);
+    padding:.78571429rem 1.14285714rem!important;
+    font-size:1rem;
+    text-transform:none;
+    font-weight:400;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    -webkit-touch-callout:none;
+    width: 100%;
+   }

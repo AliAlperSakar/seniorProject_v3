@@ -1,0 +1,26 @@
+span{
+    display: block;
+    margin: 0 0 .28571429rem 0;
+    color: rgba(0,0,0,.87);
+    font-size: .92857143em;
+    font-weight: 700;
+    text-transform: none;
+}
+
+
+.general{
+    width: 100%;
+    align-items: flex-end;
+}
+.mngannspecial{
+    width: 20%;
+    height: 15%;
+    border: 2px solid wheat;
+    margin-bottom: 20px;
+    display: inline-block;
+    text-align: center;
+}
+
+.mngannspecial figure{
+    margin:1em;
+}

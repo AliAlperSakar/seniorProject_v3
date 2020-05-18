@@ -1,0 +1,206 @@
+.home {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 90px;
+    background-color: white;
+}
+
+.img {
+    width: 100%;
+    height: 600px;
+    background-color: whitesmoke;
+    /* margin-bottom: 80px; */
+    
+    /* border: ridge; */
+   
+}
+.carousel .slider {
+    margin:0;
+    padding:0;
+    position:relative;
+    list-style:none;
+    width:100%;
+    height: 700px;
+   }
+.hmpAnnounce{
+    margin-top: 5px;
+    text-align: center;
+    background-color: white;
+}
+.hmpAnnounce1{
+    margin-top: 8%;
+    text-align: center;
+    background-color: white;
+}
+
+
+.hmpAnnounceTable{
+    padding: 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.hmpAnnounceTable1{
+    padding: 0px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.tbl {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.tablo {
+    width: 100%;
+    margin: 0px;
+    text-align: center;
+}
+
+.announce {
+    background-color: whitesmoke;
+}
+
+.hometable{
+    margin: 0px;
+}
+
+.announcementlogo {
+    width: 30%;
+}
+
+.main {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 60px;
+    background-color: white;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 200px;
+    margin: 200px;
+}
+
+.specialtrhome{
+    width: 20%;
+    margin-top: 4%;
+    margin-bottom: 20px;
+    display: inline-table;
+}
+
+.specialtrhome:hover {
+    background-color: #2d2a62;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+div.carousel{
+    background-color: white;
+}
+
+.deneme{
+    width: 100%;
+}
+
+.main-navbar{
+    width: 80%;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    /* text-align: center; */
+    
+    /* padding-bottom: 40px; */
+    height: fit-content;
+    width: fit-content;
+}
+
+.bilAmblem{
+ float:left;
+    width:25%;
+    margin-bottom: 1%;
+    
+}
+
+.ulMain{
+    float: right;
+    padding: 20px 0 0;
+}
+
+.main-navbar li{
+    margin: auto;
+}
+.main-navbar .navbar-nav {
+    float: right;
+    
+}
+.navbar-nav > li:first-child {
+    padding-left: 0;
+}
+
+#ul {
+    /* width: 100%; */
+    list-style-type: none;
+    margin-top: 10px;
+    padding: 0;
+    overflow: hidden;
+    float: right;
+  }
+  
+#ul li {
+    float: left;
+    font-size: x-large;
+  }
+  
+#ul li a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+#ul li a:hover {
+    background-color: whitesmoke;
+    color: red;
+    width: fit-content;
+    background: none;
+  }
+
+  .hmpAnnounceTable a{
+      color: black;
+  }
+  .hmpAnnounceTable1 a{
+    color: black;
+}
+
+  .specialtr:hover h3{
+    color:#2d2a62;
+}
+
+p .copyright{
+    width: 100%;
+    margin-bottom: 100px;
+}
+ul.thumbs.animated{
+    display:none;
+}

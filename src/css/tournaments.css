@@ -1,0 +1,156 @@
+.coursemain{
+    background-color:#bfbfbf ;
+    width: 100%;
+    height:200px;
+    margin-top: 4%;
+    font-size: 40px;
+    color:white;
+    text-align: center;
+    -webkit-box-shadow: inset -2px 5px 12px -6px rgba(0,0,0,0.8);
+-moz-box-shadow: inset -2px 5px 12px -6px rgba(0,0,0,0.8);
+box-shadow: inset -2px 5px 12px -6px rgba(0,0,0,0.8);
+ 
+    
+}
+.maintext{
+    padding-top: 4%;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.tourmain{
+ 
+    top: 80px;
+  
+    width: 100%;
+    height: 100%;
+    background-color: whitesmoke;
+    z-index: 1;
+  
+}
+
+li{
+    list-style-type: none;
+    width: 100px;
+}
+.item{
+    width: 100px;
+}
+
+.imgUl li{
+    display: inline-block;
+    margin-right: 3%;
+ 
+
+}
+
+.imgUl span{
+    display: inline-block;
+    text-align: center;
+    width: 25%;
+    margin: 10%;
+}
+
+.deneme{
+    width: 20%;
+    height: 20%;
+    
+}
+
+.deneme:hover{
+  
+    opacity: 1;
+    /* border: 1px solid black; */
+  
+}
+
+.contenttournament1{
+    margin-top: 7%;
+position: absolute;
+height: 25%;
+    width: 20%;
+    z-index: 11;
+    margin-left:5%;
+    text-align: center;
+    
+    
+
+}
+.contenttournament2{
+    margin-top: 7%;
+    position: absolute;
+    margin-left: 27%;
+    height: 25%;
+    width: 20%;
+    z-index: 12;
+    text-align: center;
+
+}
+.contenttournament3{
+  
+    margin-top: 7%;
+      position: absolute;
+    margin-left: 50%;
+    height: 25%;
+    width: 20%;
+    z-index: 13;
+    text-align: center;
+
+}
+.contenttournament4{
+    margin-top: 7%;
+    position: absolute;
+    margin-left: 73%;
+    height: 25%;
+    z-index: 14;
+    width: 20%;
+    text-align: center;
+
+}
+
+.imgbackground{
+    background-color:black;
+    width: 100%;
+    height:30%;
+    z-index: 60;
+}
+.futbol {
+ 
+    margin-bottom: 4%;
+    width: 20%;
+}
+.basketbol{
+    width: 20%;
+    margin-bottom: 4%;
+}
+.racket{
+    width: 20%;
+    margin-bottom: 4%;
+}
+.voleybol{
+    width: 20%;
+    margin-bottom: 4%;
+}
+.page1{
+    width: 100%;
+    height: 300px;
+    background-color:white;
+    right: 10%;
+
+    
+    
+
+}
+.tournamentmin{
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    height: 100px;
+    display: block;
+}
+
+p.copyright{
+    width: 100%;
+    margin-bottom: 100px;
+text-align: center;
+}

@@ -1,0 +1,154 @@
+.main {
+    /* background: linear-gradient(to left, #2d2a62, white); */
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background:#f5f8fa;
+}
+
+.login {
+    justify-content: center;
+}
+
+.logcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color:#f5f8fa;
+    padding-bottom: 4%;
+}
+
+.form-box {
+   
+    min-width: 20%;
+    /* height: 500px; */
+    background-color:transparent;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 2px solid red;
+    border-radius: 20px;
+    margin-bottom: 2%;
+}
+
+.header-form {
+    margin-bottom: 15px;
+}
+
+button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.message {
+    display: flex;
+    justify-content: space-between;
+    color:#09203f;
+}
+
+.social {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+}
+
+.social i {
+    font-size: 35px;
+}
+
+.social i:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.bilkentlogo {
+    width: 70%;
+    height: 100%;
+    padding-top: 5%;
+    margin-left: 6%;
+    margin-bottom: 1%;
+    
+   
+}
+
+.bilkentsportreglogo {
+    position: absolute;
+    z-index: 1;
+    margin-top: -304px;
+    
+}
+
+.bilkentimage {
+    width: 3%;
+    display: inline-flex;
+    margin-top: 1%;
+   
+}
+
+.logimage{
+    margin-bottom: 15%;
+    padding-right: 50px;
+    margin-top: 50px;
+}
+
+#err::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: red;
+    opacity: 1; /* Firefox */
+  }
+
+p.logintext{
+    margin-top: 1%;
+    width:100%;
+    font-size: 20px;
+   
+    background-color:#f5f8fa;
+    color: #09203f;
+    
+    letter-spacing: 1px;
+    font-weight: bold;
+
+}
+.logintextdiv{
+    height:20%;
+    background-color:#f5f8fa;
+   
+}
+
+/*
+.cardlogin {
+    width: 40%;
+    border: 2px solid;
+    padding-bottom: 40%;
+    text-align: center;
+    background-color: white;
+    border-radius:4%;
+    height:10px;
+    margin:auto;
+}
+
+/* .main{
+    width: 100%;
+    padding: 100px;
+} */
+
+
+/*
+.login{
+    width: 1000px;
+    height: 1000px;
+    padding: 100px;
+    text-align: center;
+}
+
+.form {
+    margin-top: 50px;
+}
+
+
+
+.col-md-8 {
+    /* padding-left: 500px; */

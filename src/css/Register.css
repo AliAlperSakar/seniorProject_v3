@@ -1,0 +1,163 @@
+.main {
+  background:#f5f8fa;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+.login{
+    justify-content: center;
+  }
+    
+    .regcontainer {
+      background:#f5f8fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100%;
+    }
+  
+    .form-box {
+      width: 25%;
+      /* height: 700px; */
+      background-color:transparent;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    
+      border-radius: 2%;
+    }
+  
+    .header-form {
+      margin-bottom: 15px;
+    }
+  
+    button {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  
+    .message {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .social {
+      display: flex;
+      justify-content: space-around;
+      padding: 30px;
+    }
+    
+    .social i {
+      font-size: 35px;
+    }
+    
+    .social i:hover {
+      color: red;
+      cursor: pointer;
+    }
+    
+    .bilkentlogo {
+      width: 500px ;
+      height: 320px;
+      margin-bottom: -80px;
+  }
+  
+  .bilkentsportlogo{
+    position: absolute;
+    z-index: 1;
+   
+  }
+  
+  .bilkentimage{
+    width: 10%;
+  
+    
+    
+  }
+
+  .form-control{
+      font-size: 17px;
+  }
+
+  .regimage{
+    margin-bottom: 20%;
+    margin-left: 10%;
+    padding-right: 100px;
+    margin-top: 5%;
+    display: block;
+    width: 100%;
+  }
+  
+  #err::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: red;
+    opacity: 1; /* Firefox */
+  }
+
+  .err{
+    color: red;
+  }
+
+
+  #normal::placeholder {
+    color: grey;
+  }
+  /*
+  .cardlogin {
+      width: 40%;
+      border: 2px solid;
+      padding-bottom: 40%;
+      text-align: center;
+      background-color: white;
+      border-radius:4%;
+      height:10px;
+      margin:auto;
+  }
+  
+  /* .main{
+      width: 100%;
+      padding: 100px;
+  } */
+  
+  /*
+  .login{
+      width: 1000px;
+      height: 1000px;
+      padding: 100px;
+      text-align: center;
+  }
+  
+  .form {
+      margin-top: 50px;
+  }
+  
+  
+  
+  .col-md-8 {
+      /* padding-left: 500px; */
+      
+div.Dropdown-control{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+  }
+
+  div.Dropdown-placeholder.is-selected{
+    float: left;
+    padding-left: 20px;
+  }
+ 
+  #status{
+    width: 100%;
+    height: 38px;
+    padding-left: 30px;
+    /* border-radius: 5%; */
+  
+  }
+
+  #forget{
+    float: right;
+  }
