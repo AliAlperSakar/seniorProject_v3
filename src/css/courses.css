@@ -9,7 +9,7 @@
     -webkit-box-shadow: inset -2px 5px 12px -6px rgba(0,0,0,0.8);
 -moz-box-shadow: inset -2px 5px 12px -6px rgba(0,0,0,0.8);
 box-shadow: inset -2px 5px 12px -6px rgba(0,0,0,0.8);
- 
+display: inline-block;
     
 }
 .maintext{
@@ -17,7 +17,10 @@ box-shadow: inset -2px 5px 12px -6px rgba(0,0,0,0.8);
     font-weight: bold;
     letter-spacing: 2px;
 }
+.formcourse{
+    width: 200px;
 
+}
 
 .courseoption{
     width: 10%;
@@ -68,11 +71,30 @@ margin-top: 2%;
 }
 .enrollbutton{
     
-    display:inline-block;
+    display:inline-flex;
     margin-top:50%;
-    margin-left: 33%;
+    width: 100%;
+    justify-content: center;
   
    
   
 
 }
+.selectedcoursemain{
+
+justify-content: center;
+display: inline-flex;
+width:90%;
+margin-left: 4%;
+margin-right: 4%;
+    
+}
+.selectedcoursemain2{
+
+    justify-content: center;
+    display: inline-flex;
+    width:90%;
+    margin-left: 4%;
+    margin-right: 4%;
+        
+    }

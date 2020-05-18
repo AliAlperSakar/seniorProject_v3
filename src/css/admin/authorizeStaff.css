@@ -1,0 +1,101 @@
+
+.contentmanstaff
+{
+    position: relative;
+    
+    width: 100%;
+    background-color: white;
+  height: auto;
+    margin-top: 2%;
+    border:0.1pt solid;
+    border-radius: 20px;
+    border-color: lightgray;
+    
+
+}
+
+.contentmanstaff1
+{
+    position: relative;
+    
+    width: 100%;
+    background-color: white;
+  height: auto;
+    margin-top: 2%;
+    border:0.1pt solid;
+    border-radius: 20px;
+    border-color: lightgray;
+    margin-bottom: 3%;
+
+}
+
+
+.contentmanstaff table {
+        
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin:0;
+    justify-content: center;
+    background-color: white;
+    
+}
+
+.contentmanstaff table td {
+text-align: left;
+background-color: white;
+border-width: 0;
+margin-top: 2%;
+
+height: 50px;
+justify-content: left;
+margin:0px;
+
+}
+.contentmanstaff .table18{
+   margin-left: 2%;
+    width: fit-content;
+    margin-top: 3%;
+    background-color: transparent;
+}
+
+.manappfields{
+    display: flex;
+    height: 200px;
+}
+.manappselector1{
+    margin-left: 20px;
+    width: 300px;
+    margin-top: 20px;
+}
+.manappselector2{
+    margin-left: 50px;
+    width: 300px;
+    margin-top: 20px;
+}
+.manappselector3{
+    margin-left: 50px;
+    width: 300px;
+    margin-top: 20px;
+}
+.manappselector4{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.formmanapptext{
+    width:200px;
+}
+
+.formmanapptime{
+    width:200px;
+}
+.manautbuttons{
+    display:inline-flex;
+    
+   justify-content:right;
+   width: 100%;
+   position: absolute;
+   bottom: 30px;
+   right: 30px;
+   
+}

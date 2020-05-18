@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MainLayout from '../layouts/MainLayout'
 import '../css/reservation.css'
-import { Form, Divider, Button, Icon } from 'semantic-ui-react'
+import { Form, Divider, Button, Icon, Select } from 'semantic-ui-react'
 import { SocialMediaIconsReact } from 'social-media-icons-react';
 const restype = [
     { key: 'a', text: 'Appointment', value: 'appointment' },
@@ -36,27 +36,66 @@ export default class Reservation extends Component {
                 <div className="resoptions">
 
                     <Form.Select fluid label='Reservation Type' placeholder='Choose a Type' onChange={this.handleChange}
-                        options={restype} />
+                        options={restype} className="formres" />
 
                 </div>
                 <div className="resoptions">
 
                     <Form.Select fluid label='Campus' placeholder='Choose a Campus' onChange={this.handleChange}
-                        options={campusoptions} />
+                        options={campusoptions} className="formres" />
 
                 </div>
                 <div className="resoptions">
 
                     <Form.Select fluid label='Sports' placeholder='Choose a Sport' onChange={this.handleChange}
-                        options={sportoptions} />
+                        options={sportoptions} className="formres" />
 
                 </div>
            </div>
             <div className="layout">
 
-            <div className="enrollbuttons">
-            <Button primary size="20px" id="add" >Enroll&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button>
-            </div>
+            <div className="rescontent1">
+                        <table className="table19" borderWidth="0">
+<tr>
+    <td></td>
+</tr>
+                            <tr>
+                                <td>Id:1<br></br> Reservation Type: Appointment <br></br>Campus : Main  <br></br> Time Slot : 19:30 / 20:30</td>
+                                <td><Button primary size="medium" id="edit" >UPDATE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
+                                <Button primary size="20px" id="add" >ENROLL&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button>
+                                </td>
+
+
+                            </tr>
+                            <tr>
+                            <td>Id:1<br></br> Reservation Type: Sport Court <br></br>Campus : East <br></br>Field : Football <br></br> Time Slot : 19:30 / 20:30</td>
+                                <td><Button primary size="medium" id="edit" >UPDATE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
+                                <Button primary size="20px" id="add" >ENROLL&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button>
+                                </td>
+
+
+                            </tr>
+                            <tr>
+                            <td>Id:1<br></br> Reservation Type: Pool <br></br>Campus : Main <br></br>Lane : 1 <br></br> Time Slot : 19:30 / 20:30</td>
+                                <td><Button primary size="medium" id="edit" >UPDATE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
+                                <Button primary size="20px" id="add" >ENROLL&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button>
+                                </td>
+
+
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+
+
+
+
+
+                        </table>
+
+                    </div>
+
+      
 
 
             </div>

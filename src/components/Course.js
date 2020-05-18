@@ -40,8 +40,32 @@ export default class Course extends Component {
                 <div className="courseoption">
 
                     <Form.Select fluid label='Courses' placeholder='Choose a Course' onChange={this.handleChange}
-                        options={courseoptions} />
+                        options={courseoptions} className="formcourse" />
 
+                </div>
+                <div className="selectedcoursemain2">
+                <div className="selectedcourse">
+                    <div className="coursename">
+                        Zumba
+            </div>
+                    <div className="instructor">
+                        <b>Instructor :</b> Seda bilmemne
+            </div>
+                    <div className="place">
+                       <b>Place :</b> Main Campus
+            </div>
+            <div className="level">
+                       <b>Level :</b> Beginner
+            </div>
+
+            <div className="timeslot">
+            <Form.Select fluid label='Time Slot' placeholder='Choose a Time Slot' onChange={this.handleChange}
+                        options={timeoptions} />
+
+            </div>
+            <div className="enrollbutton">
+            <Button primary size="20px" id="add" >Enroll&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button>
+            </div>
                 </div>
                 <div className="selectedcourse">
                     <div className="coursename">
@@ -67,9 +91,156 @@ export default class Course extends Component {
             </div>
                 </div>
 
+                <div className="selectedcourse">
+                    <div className="coursename">
+                        Zumba
+            </div>
+                    <div className="instructor">
+                        <b>Instructor :</b> Seda bilmemne
+            </div>
+                    <div className="place">
+                       <b>Place :</b> Main Campus
+            </div>
+            <div className="level">
+                       <b>Level :</b> Beginner
+            </div>
+
+            <div className="timeslot">
+            <Form.Select fluid label='Time Slot' placeholder='Choose a Time Slot' onChange={this.handleChange}
+                        options={timeoptions} />
+
+            </div>
+            <div className="enrollbutton">
+            <Button primary size="20px" id="add" >Enroll&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button>
+            </div>
+                </div>
+
+                <div className="selectedcourse">
+                    <div className="coursename">
+                        Zumba
+            </div>
+                    <div className="instructor">
+                        <b>Instructor :</b> Seda bilmemne
+            </div>
+                    <div className="place">
+                       <b>Place :</b> Main Campus
+            </div>
+            <div className="level">
+                       <b>Level :</b> Beginner
+            </div>
+
+            <div className="timeslot">
+            <Form.Select fluid label='Time Slot' placeholder='Choose a Time Slot' onChange={this.handleChange}
+                        options={timeoptions} />
+
+            </div>
+            <div className="enrollbutton">
+            <Button primary size="20px" id="add" >Enroll&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button>
+            </div>
+                </div>
+                
+                </div>
+                <div className="selectedcoursemain">
+                <div className="selectedcourse">
+                    <div className="coursename">
+                        Zumba
+            </div>
+                    <div className="instructor">
+                        <b>Instructor :</b> Seda bilmemne
+            </div>
+                    <div className="place">
+                       <b>Place :</b> Main Campus
+            </div>
+            <div className="level">
+                       <b>Level :</b> Beginner
+            </div>
+
+            <div className="timeslot">
+            <Form.Select fluid label='Time Slot' placeholder='Choose a Time Slot' onChange={this.handleChange}
+                        options={timeoptions} />
+
+            </div>
+            <div className="enrollbutton">
+            <Button primary size="20px" id="add" >Enroll&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button>
+            </div>
+                </div>
+                <div className="selectedcourse">
+                    <div className="coursename">
+                        Zumba
+            </div>
+                    <div className="instructor">
+                        <b>Instructor :</b> Seda bilmemne
+            </div>
+                    <div className="place">
+                       <b>Place :</b> Main Campus
+            </div>
+            <div className="level">
+                       <b>Level :</b> Beginner
+            </div>
+
+            <div className="timeslot">
+            <Form.Select fluid label='Time Slot' placeholder='Choose a Time Slot' onChange={this.handleChange}
+                        options={timeoptions} />
+
+            </div>
+            <div className="enrollbutton">
+            <Button primary size="20px" id="add" >Enroll&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button>
+            </div>
+                </div>
+
+                <div className="selectedcourse">
+                    <div className="coursename">
+                        Zumba
+            </div>
+                    <div className="instructor">
+                        <b>Instructor :</b> Seda bilmemne
+            </div>
+                    <div className="place">
+                       <b>Place :</b> Main Campus
+            </div>
+            <div className="level">
+                       <b>Level :</b> Beginner
+            </div>
+
+            <div className="timeslot">
+            <Form.Select fluid label='Time Slot' placeholder='Choose a Time Slot' onChange={this.handleChange}
+                        options={timeoptions} />
+
+            </div>
+            <div className="enrollbutton">
+            <Button primary size="20px" id="add" >Enroll&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button>
+            </div>
+                </div>
+
+                <div className="selectedcourse">
+                    <div className="coursename">
+                        Zumba
+            </div>
+                    <div className="instructor">
+                        <b>Instructor :</b> Seda bilmemne
+            </div>
+                    <div className="place">
+                       <b>Place :</b> Main Campus
+            </div>
+            <div className="level">
+                       <b>Level :</b> Beginner
+            </div>
+
+            <div className="timeslot">
+            <Form.Select fluid label='Time Slot' placeholder='Choose a Time Slot' onChange={this.handleChange}
+                        options={timeoptions} />
+
+            </div>
+            <div className="enrollbutton">
+            <Button primary size="20px" id="add" >Enroll&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button>
+            </div>
+                </div>
+                
+                </div>
+
 
                 <div className="footer">
-            <footer style={{  textAlign:"center",width: "100%", paddingTop: "30px", paddingBottom: "30px", marginBottom: "50px", marginTop: "30px", backgroundColor: "#dadce8" }}>
+            <footer style={{  textAlign:"center",width: "100%", paddingTop: "30px", paddingBottom: "30px", marginBottom: "50px", marginTop: "30px", backgroundColor: "#dadce8"}}>
 							<SocialMediaIconsReact borderColor="rgba(0,0,0,0.25)" borderWidth="5" borderStyle="solid" icon="twitter" iconColor="rgba(255,255,255,1)" backgroundColor="rgba(28,186,223,1)" iconSize="5" roundness="50%" url="https://twitter.com/BilkentUniv" size="30" />&nbsp;&nbsp;&nbsp;
 							<SocialMediaIconsReact borderColor="rgba(0,0,0,0.25)" borderWidth="5" borderStyle="solid" icon="facebook" iconColor="rgba(255,255,255,1)" backgroundColor="rgba(28,90,223,1)" iconSize="5" roundness="50%" url="https://tr-tr.facebook.com/pages/Bilkent-Yurtlar-Spor-Salonu/277203525641805" size="30" />&nbsp;&nbsp;&nbsp;
 							<SocialMediaIconsReact borderColor="rgba(0,0,0,0.25)" borderWidth="5" borderStyle="solid" icon="youtube" iconColor="rgba(255,255,255,1)" backgroundColor="rgba(251,31,0,1)" iconSize="5" roundness="50%" url="https://www.youtube.com/user/BilkentUniversitesi" size="30" />&nbsp;&nbsp;&nbsp;

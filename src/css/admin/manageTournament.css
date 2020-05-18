@@ -1,11 +1,11 @@
 
 .mngannspecial{
+    width: 21%;
+    height: auto;
+    border: 1px solid lightgray;
+    margin-bottom: 20px;
     display: inline-table;
-    border:1px solid;
-    height: 600px;
-    margin-bottom: 5%;
-    margin-left: 4%;
-    border-radius: 10px;
+    text-align: center;
 }
 .ui.dropdown .menu>.item {
     position:relative;

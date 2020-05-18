@@ -172,7 +172,7 @@ button.ui.button.myAccount{
     margin-left: 65%;
     /* height: 60px; */
     
-    background-color: #2d2a62;
+    background-color: transparent;
     color:#76bfff;
    margin-top: 0.5%;
 }
@@ -184,7 +184,7 @@ button.ui.button.myAccount:hover{
     margin-left: 65%;
     /* height: 60px; */
     color:white;
-    background-color: #2d2a62;
+    background-color:transparent;
  
    
 }

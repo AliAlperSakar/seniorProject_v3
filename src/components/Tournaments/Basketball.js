@@ -3,7 +3,15 @@ import axios from "axios";
 import MainLayout from '../../layouts/MainLayout'
 import '../../css/basketball.css';
 import fotoBasketball from '../../images/fotos/fotobasketball.jpg'
+import { Form, Divider, Button, Icon } from 'semantic-ui-react'
 
+
+const campusbasketball = [
+    { key: 'm', text: 'Main Campus', value: 'mainbt' },
+    { key: 'e', text: 'East Campus', value: 'eastbt' },
+   
+
+]
 
 export default class Basketball extends Component {
     
@@ -35,13 +43,39 @@ export default class Basketball extends Component {
          <img className='fotoBasketball' src={fotoBasketball} />
 
          </div>
-         <div className="contentBasketball">
-            {this.state.basketball.map((x)=>
-                <p> {x.id} {x.name} {x.campus} {x.teamquota} </p>
-            )}
-         
-         
-         </div>
+         <div className="basketballcontentt">
+         <div className="formbasketball">
+            <Form.Select fluid label=' Choose a Campus' placeholder='Choose a Campus' onChange={this.handleChange}
+                        options={campusbasketball} className="formbasketballt" />
+                        <div className="btenrollbutton">
+                         <Button primary size="20px" id="ftenroll" >Enroll&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button></div>
+            </div>
+        <table className="table14" borderWidth="0">
+        
+                <tr>
+                    <td><b>Tournament Name</b><br></br><hr class="solid" width="80%"></hr></td>
+                    <td><b>Tournament Campus</b><br></br><hr class="solid" width="80%"></hr></td>
+                    <td><b>Tournament Quota</b><br></br><hr class="solid" width="80%"></hr></td>
+                    
+                </tr>
+                
+                <tr>
+                    <td>{this.state.basketball.map((x)=>
+            <p> {x.name} Tournament </p>
+        )}</td>
+                    <td>{this.state.basketball.map((x)=>
+            <p>{x.campus} Campus</p>)}</td>
+                    <td>{this.state.basketball.map((x)=>
+            <p> {x.teamquota} </p>
+
+            )}  </td>
+            
+                </tr>
+            
+               
+           
+            </table>  
+            </div>
 
             </div>
          </div>

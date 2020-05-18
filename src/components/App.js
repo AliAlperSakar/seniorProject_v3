@@ -22,9 +22,15 @@ import Basketball from "./Tournaments/Basketball";
 import Volleyball from "./Tournaments/Volleyball";
 import RacketSports from "./Tournaments/RacketSports";
 import manageTournament from "./admin/manageTournaments";
+import manageAccount from "./admin/manageAccount";
+import manageReservation from "./admin/manageReservation";
+import manageEvent from "./admin/manageEvent";
 import Events from "./Events";
 import Gallery from "./Gallery";
 import About from "./About";
+import manageAppointment from "./admin/manageAppointment";
+import authorizeStaff from "./admin/authorizeStaff";
+
 
 class App extends Component {
     constructor() {
@@ -36,7 +42,7 @@ class App extends Component {
             <Router>
                 <div>
                     <Switch>
-                        <Route path="/" exact component={Football}/>
+                        <Route path="/" exact component={Reservation}/>
                         <Route path="/registered" component={Registered}/>
                         <Route path="/homepage" component={HomePage}/>
                         <Route path="/courses" component={Course}/>
@@ -47,8 +53,13 @@ class App extends Component {
                         <Route path="/about" component={About}/>
                         <Route path="/gallery" component={Gallery}/>
                         <Route path="/announcement/manage" exact component={manageAnnouncement}/>
+                        <Route path="/event/manage" exact component={manageEvent}/>
+                        <Route path="/appointment/manage" exact component={manageAppointment}/>
                         <Route path="/announcement/manage/:id" component={manageAnnouncement}/>
+                        <Route path="/account/manage" exact component={manageAccount}/>
                         <Route path="/tournament/manage" exact component={manageTournament}/>
+                        <Route path="/reservation/manage" exact component={manageReservation}/>
+                        <Route path="/authorize/staff" exact component={authorizeStaff}/>
                         <Route path="/register" exact component={Register} />
                         <Route path="/login" exact component={Login} />
                         <Route path="/homepage" exact component={HomePage} />

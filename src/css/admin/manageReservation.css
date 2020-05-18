@@ -1,0 +1,97 @@
+
+.contentmanres
+{
+    position: relative;
+    
+    width: 100%;
+    background-color: white;
+  height: auto;
+    margin-top: 2%;
+    border:0.1pt solid;
+    border-radius: 20px;
+    border-color: lightgray;
+    
+
+}
+
+.contentmanres1
+{
+    position: relative;
+    
+    width: 100%;
+    background-color: white;
+  height: 200px;
+    margin-top: 2%;
+    border:0.1pt solid;
+    border-radius: 20px;
+    border-color: lightgray;
+    margin-bottom: 3%;
+
+}
+
+
+.contentmanres table {
+        
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin:0;
+    justify-content: center;
+    background-color: white;
+    
+}
+
+.contentmanres table td {
+text-align: left;
+background-color: white;
+border-width: 0;
+margin-top: 2%;
+
+height: 50px;
+justify-content: left;
+margin:0px;
+
+}
+.contentmanres .table16{
+   margin-left: 2%;
+    width: fit-content;
+    margin-top: 3%;
+    background-color: transparent;
+}
+
+.manresfields{
+    display: flex;
+}
+.manresselector1{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.manresselector2{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.manresselector3{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.manresselector4{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.formmanrestext{
+    width:200px;
+}
+
+.formmanrestime{
+    width:200px;
+}
+.manresbuttons{
+    display:inline-flex;
+    
+   justify-content:right;
+   width: 100%;
+   position: absolute;
+   bottom: 30px;
+   right: 30px;
+   
+}

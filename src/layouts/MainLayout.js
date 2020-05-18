@@ -96,11 +96,12 @@ class MainLayout extends Component {
                             <div className="adminPanel">
                                 <ul>
                                     <Link to="/announcement/manage"><li>Manage Announcements</li></Link>
-                                    <li>Manage Reservations</li>
+                                    <Link to="/event/manage"> <li>Manage Events</li></Link>
+                                    <Link to="/reservation/manage"><li>Manage Reservations</li></Link>
                                     <Link to="/tournament/manage"><li>Manage Tournaments</li></Link>
-                                    <li>Manage Accounts</li>
-                                    <li>Manage Appointment</li>
-                                    <li>Authorize Staff</li>
+                                    <Link to="/account/manage"><li>Manage Accounts</li></Link>
+                                    <Link to="/appointment/manage"> <li>Manage Appointment</li></Link>
+                                    <Link to="/authorize/staff"><li>Authorize Staff</li></Link>
                                 </ul>
                             </div> :<div></div> }
                         
