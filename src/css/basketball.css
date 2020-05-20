@@ -15,10 +15,12 @@
    opacity: 0.8;
    width: 100%;
 }
+
 .contentBasketball{
     margin-top: 2%;
     display: inline-flex;
 }
+
 .mainBasketball table {
         
     font-family: arial, sans-serif;

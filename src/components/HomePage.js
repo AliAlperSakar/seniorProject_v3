@@ -14,7 +14,20 @@ import store from 'store';
 import sportCenterIcon from "../images/sportcenter.png"
 import { Icon } from 'semantic-ui-react'
 import { SocialMediaIconsReact } from 'social-media-icons-react';
+import fit from '../images/fit.jpeg';
+import football from '../images/football.jpeg';
 
+import kendo from '../images/kendo.jpeg';
+
+import pool from '../images/pool.jpeg';
+
+import taekwondo from '../images/taekwondo.jpeg';
+
+import tennis from '../images/tennis.jpeg';
+
+import volleyball from '../images/volleyball.jpeg';
+
+import volleyball2 from '../images/volleyball2.jpeg';
 
 var Carousel = require('react-responsive-carousel').Carousel;
 
@@ -30,18 +43,22 @@ export default class HomePage extends Component {
 		super(props);
 		this.state = {
 			selectedFile: null,
-			announcements: []
+			announcements: [],
+			events:[]
 		}
 
 		this.onChangeFileHandler = this.onChangeFileHandler.bind(this);
 	}
 
 	componentDidMount() {
-		axios.get("http://localhost:8081/announcements")
+		axios.get("http://localhost:8082/announcements")
 			.then(response => this.setState({
 				announcements: response.data
 			}))
-
+			axios.get("http://localhost:8082/events")
+			.then(response => this.setState({
+				events: response.data
+			}))
 	}
 
 	onChange(e) {
@@ -63,15 +80,11 @@ export default class HomePage extends Component {
 	onClick = (e) => {
 	}
 	render() {
-		
-		const { announcements } = this.state;
+		const { announcements,events } = this.state;
 		const href = "/announcements/";
 		const status = store.get("status");
-		if (status == "admin") {
-			if (this.state.announcements) {
 				return (
 					< div className="home" >
-						
 						<MainLayout />
 						<div className="main-navbar">
 							<img className="bilAmblem" src={bilkentAmblem} />
@@ -85,16 +98,32 @@ export default class HomePage extends Component {
 											</div>
 										</a>
 									</li>
-									<li style={{ fontSize:"16px" }}><a href="./gallery">Gallery</a></li>
-									<li style={{fontSize:"16px"   }}><a>About</a></li>
+									<li style={{ fontSize:"16px" }}><Link to="./gallery">Gallery</Link></li>
+									<li style={{fontSize:"16px"   }}><Link to="./about">About</Link></li>
 								</ul>
 							</div>
 	
 						</div>
 						<div className="img" >
 							<Carousel width="100%"	autoPlay={true} infiniteLoop={true} showArrows={true} onChange={this.onChange} onClickItem={this.onClickItem} onClickThumb={this.onClickThumb}>
-								<div>
+							<div>
 									<img src={Bbuilding} />
+									
+								</div>
+								<div>
+									<img src={fit} />
+									
+								</div>
+								<div>
+									<img src={football} />
+									
+								</div>
+								<div>
+									<img src={kendo} />
+									
+								</div>
+								<div>
+									<img src={pool} />
 									
 								</div>
 								<div>
@@ -104,55 +133,52 @@ export default class HomePage extends Component {
 							</Carousel>
 						</div>
 						<div className="hmpAnnounce1">
-							{/* <div className="announce" >
-							<img className='announcementlogo' src={annoucementlogo} />
-						</div > */}
 							<div className="hmpAnnounceTable1">
-								{/* <table className='table'>
-								<tbody>
-									<tr> */}
-								{/* <th>Image</th> <th> Content </th> <th > Date </th > </tr > */}
 								<h2>Announcements</h2>
 								{announcements.map((x, index) =>
-									x.id < 6 ?
-										<Link to={href + index}>
-											<div className='specialtr' style={{ width: "25%",marginLeft:"3%",marginRight:"3%"}} key={x.id}>
-												<h3 style={{ margin: "20px" }}>{x.text}</h3>
-												<figure className="figuree"><img src={Bbuilding} /></figure>
-	
-												<p style={{ maxHeight: "20%",textAlign:"justify"}}>Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. </p>
-											</div>
-										</Link>
-										: <div></div>
+									{
+										let str = "data:image/jpeg;base64," + x.base64.toString();
+										console.log(str);
+										return (
+											x.id < 6 ?
+											<Link to={href + index}>
+												<div className='specialtr' style={{ width: "20%"}} key={x.id}>
+													<h3 style={{ margin: "20px" }}>{x.title}</h3>
+													<figure className="figuree"><img src={str} /></figure>
+		
+													<p style={{ maxHeight: "20%" }}>{x.text}</p>
+												</div>
+											</Link>
+											: <div></div>)
+									}
+									
 								)
 								}
-								{/* </tbody> */}
-								{/* </table > */}
 							</div>							
 						</div>
 						<div className="hmpAnnounce">
-
 						<div className="hmpAnnounceTable">
-								{/* <table className='table'>
-								<tbody>
-									<tr> */}
-								{/* <th>Image</th> <th> Content </th> <th > Date </th > </tr > */}
 								<h2>Events</h2>
-								{announcements.map((x, index) =>
-									x.id < 6 ?
-										<Link to={href + index}>
-											<div className='specialtr' style={{ width: "25%", maxHeight:"30%",marginLeft:"3%",marginRight:"3%"}} key={x.id}>
-												<h3 style={{ margin: "20px" }}>{x.text}</h3>
-												<figure className="figuree"><img src={Bbuilding} /></figure>
-	
-												<p style={{ maxHeight: "20%",textAlign:"justify" }}>Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. </p>
-											</div>
-										</Link>
-										: <div></div>
+								{events.map((x, index) =>
+									{
+										let str = "data:image/jpeg;base64," + x.base64.toString();
+										console.log(str);
+										return (
+												x.id < 6 ?
+													<Link to={href + index}>
+														<div className='specialtr' style={{ width: "20%", maxHeight:"30%",  /*margin: "0px 40px 0px 40px"*/ }} key={x.id}>
+															<h3 style={{ margin: "20px" }}>{x.title}</h3>
+															<figure className="figuree"><img src={str} /></figure>
+															<p style={{ height: "20%" }}>{x.text}</p>
+														</div>
+													</Link>
+													: <div></div>
+											
+										)}
+									
 								)
 								}
-								{/* </tbody> */}
-								{/* </table > */}
+								
 							</div>
 							</div>
 						<footer style={{ textAlign:"center", width: "100%", paddingTop: "30px", paddingBottom: "30px", marginBottom: "50px", marginTop: "100px", backgroundColor: "#dadce8" }}>
@@ -162,46 +188,16 @@ export default class HomePage extends Component {
 								<SocialMediaIconsReact borderColor="rgba(0,0,0,0.25)" borderWidth="5" borderStyle="solid" icon="instagram" iconColor="rgba(255,255,255,1)" backgroundColor="rgba(248,87,0,1)" iconSize="5" roundness="50%" url="http://instagram.com/bilkentuniv" size="30" />
 							</footer>
 							<p class="copyright" style={{marginBottom:"50px"}}>Copyright ©  Bilkent Üniversitesi. All Rights Reserved</p>
-						{/* <div className='tablo' >
-							<div className='tbl' >
-								<div className="announce" >
-									<img className='announcementlogo' src={annoucementlogo} />
-								</div >
-								<table className='hometable' >
-									<tbody>
-										<tr >
-											<th> Content </th> <th > Date </th > </tr >
-										{announcements.map((x, index) =>
-											<tr className='specialtrhome' key={index} >
-												<td> <Link to={href + index} > {x.text} </Link></td >
-												<td> {x.date} </td></tr >
-										)
-										} </tbody>
-								</table >
-	
-							</div> </div > */}
+						
 	
 	
 	
-						{
-							/* <div className="main">
-													HELLO
-												</div> */
-						}
-	
-	
-						{
-							/* <div style={divStyle}>
-													<input className="uploadbtn" type="file" name="file" onChange={this.onChangeFileHandler} />
-												</div> */
-						}
+						
 					</div>
 	
 				);
-			} else {
-				return (<div > No Announcements </div>)
-			}
-		}else{
+			
+		
 		if (this.state.announcements) {
 			return (
 				< div className="home" >
@@ -308,7 +304,7 @@ export default class HomePage extends Component {
 		} else {
 			return (<div > No Announcements </div>)
 		}
-	}
+	
 
 
 	}

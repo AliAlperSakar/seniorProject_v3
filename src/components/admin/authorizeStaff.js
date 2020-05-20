@@ -42,7 +42,7 @@ export default class authorizeStaff extends Component {
             add: false,
             edit: true,
             delete: false,
-            announcements: [],
+            staffs: [],
             announcement: "",
             deleted: ""
 
@@ -52,13 +52,34 @@ export default class authorizeStaff extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:8081/announcements")
+        axios.get("http://localhost:8082/authorize")
             .then(response => this.setState({
-                announcements: response.data
+                staffs: response.data
             }))
         console.log("Re-rendered");
 
     }
+
+
+    makeAdmin= (x) => {
+        axios.put("http://localhost:8082/authorize", {
+            bilkentId: x.bilkentId,
+            email: x.email,
+            status: x.status
+        })
+        .then(response => {
+            console.log(response);            
+        });
+
+        axios.get("http://localhost:8082/authorize")
+            .then(response => this.setState({
+                register: response.data
+            }))
+        console.log("Re-rendered");
+
+    }
+
+
 
     handleChange = (event, { name, value }) => {
         if (this.state.hasOwnProperty(name)) {
@@ -104,7 +125,7 @@ export default class authorizeStaff extends Component {
         const add = this.state;
         // this.componentRendered()
         const href = '/announcement/manage/';
-        const { announcements } = this.state;
+        const { staffs } = this.state;
         const { match } = this.props
         console.log(this.state);
         return (
@@ -136,31 +157,20 @@ export default class authorizeStaff extends Component {
                    
                     <header style={{ marginBottom: "100px",marginTop:"50px"}}><h2 style={{ float: "left" }}>Staff List</h2></header>
                     <Divider />
-                    <div className="contentmanstaff">
-                        <table className="table18" borderWidth="0">
+                   
+                        {staffs.map((x, index) =>
+									{
+										
+										return (
+                                            <div className="contentmanstaff">
+                                            <table className="table18" borderWidth="0">
+                                            <tr>
+                                            <td>Bilkent ID: {x.bilkentId}<br></br>Name: {x.name}<br></br>Surname: {x.surname}<br></br>Status: {x.status}</td>
+                                            <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={() => this.makeAdmin(x)}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
+                                                <Button primary size="medium" id="delete" value={this.state.delete} onClick={this.btnClicked}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
 
-                            <tr>
-                                <td>Id:1<br></br>Staff Name : Ahmet <br></br>Staff Surname : Sezer <br></br>Role : Admin</td>
-                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={this.btnClicked}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
-                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={this.btnClicked}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
-
-
-                            </tr>
-                            <tr>
-                            <td>Id:1<br></br>Staff Name : Ahmet <br></br>Staff Surname : Sezer <br></br>Role : Admin</td>
-                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={this.btnClicked}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
-                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={this.btnClicked}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
-
-
-                            </tr>
-                            <tr>
-                            <td>Id:1<br></br>Staff Name : Ahmet <br></br>Staff Surname : Sezer <br></br>Role : Admin</td>
-                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={this.btnClicked}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
-                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={this.btnClicked}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
-
-
-                            </tr>
-                            <tr>
+                                            </tr>
+                                            <tr>
                                 <td></td>
                             </tr>
 
@@ -172,6 +182,26 @@ export default class authorizeStaff extends Component {
 
                     </div>
                 
+											
+										)}									
+								)
+								}        
+                            
+                            {/* <tr>
+                            <td>Id:1<br></br>Staff Name : Ahmet <br></br>Staff Surname : Sezer <br></br>Role : Admin</td>
+                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={this.btnClicked}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
+                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={this.btnClicked}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
+
+
+                            </tr>
+                            <tr>
+                            <td>Id:1<br></br>Staff Name : Ahmet <br></br>Staff Surname : Sezer <br></br>Role : Admin</td>
+                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={this.btnClicked}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
+                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={this.btnClicked}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
+
+
+                            </tr> */}
+                            
 
                 </div>
 

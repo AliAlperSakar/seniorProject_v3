@@ -42,11 +42,10 @@ class App extends Component {
             <Router>
                 <div>
                     <Switch>
-                        <Route path="/" exact component={Reservation}/>
+                        <Route path="/" exact component={manageEvent}/>
                         <Route path="/registered" component={Registered}/>
-                        <Route path="/homepage" component={HomePage}/>
+                        <Route path="/homepage" strict component={HomePage}/>
                         <Route path="/courses" component={Course}/>
-                        <Route path="/tournaments" component={Tournament}/>
                         <Route path="/reservations" component={Reservation}/>
                         <Route path="/announcements" component={Announcement}/>
                         <Route path="/events" component={Events}/>
@@ -63,10 +62,11 @@ class App extends Component {
                         <Route path="/register" exact component={Register} />
                         <Route path="/login" exact component={Login} />
                         <Route path="/homepage" exact component={HomePage} />
-                        <Route path="/tournaments/football" exact component={Football} />
-                        <Route path="/tournaments/basketball" exact component={Basketball} />
-                        <Route path="/tournaments/volleyball" exact component={Volleyball} />
-                        <Route path="/tournaments/racketsports" exact component={RacketSports} />
+                        <Route path="/tournaments" exact component={Tournament}/>
+                        <Route path="/tournaments/football" component={Football} />
+                        <Route path="/tournaments/basketball" component={Basketball} />
+                        <Route path="/tournaments/volleyball"  component={Volleyball} />
+                        <Route path="/tournaments/racketsports"  component={RacketSports} />
                         
                     </Switch>
                     {/* <MainLayout /> */}

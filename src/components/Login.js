@@ -52,11 +52,13 @@ class Login extends React.Component {
                 password: this.state.password
             }
 
-            axios.post("http://localhost:8081/login", { user })
+            axios.post("http://localhost:8082/login", { user })
                 .then(res => {
                     if (res.status === 200) {
                         store.set('loggedIn', true);
-                        (res.data.map(x => {store.set("status","admin")}));
+                        (res.data.map(x => { 
+                            console.log(x);
+                            store.set("user", {status:x.status, id: x.bilkentId, email: x.email})}));
                         history.push('/homepage');
                     }
                     

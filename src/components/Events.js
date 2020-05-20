@@ -13,7 +13,7 @@ export default class Announcement extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            announcements: [],
+            events: [],
             announcement: [],
             bool: false
         }
@@ -21,9 +21,9 @@ export default class Announcement extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:8081/announcements")
+        axios.get("http://localhost:8082/events")
             .then(response => this.setState({
-                announcements: response.data
+                events: response.data
             }))
 
     }
@@ -47,10 +47,9 @@ export default class Announcement extends Component {
 
     render() {
         const status = store.get("status");
-        const { announcements } = this.state;
+        const { events } = this.state;
         const href = "/announcement/";
         console.log(status);
-        if (status == "admin") {
             return (
                 <div>
                     <MainLayout />
@@ -67,14 +66,20 @@ export default class Announcement extends Component {
                             <tbody>
                                 <tr> */}
                             {/* <th>Image</th> <th> Content </th> <th > Date </th > </tr > */}
-                            {announcements.map((x, index) =>
-                                <div className='specialtr' style={{display:"inline-table"}} key={index} onClick={console.log("SADAS")} >
-                                    <figure className="figuree"><img src={deneme} /></figure>
-                                    <h3 className="h3announce"><Link to={href + index}>{x.text}</Link></h3>
-                                    <p className="contentannounce">Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. </p>
-                                </div>
-                            )
-                            }
+                            {events.map((x, index) =>
+									{
+										let str = "data:image/jpeg;base64," + x.base64.toString();
+										console.log(str);
+										return (
+                                            <div className='specialtr' style={{display:"inline-table"}} key={index} onClick={console.log("SADAS")} >
+                                            <figure className="figuree"><img src={str} /></figure>
+                                            <h3><Link to={href + index}>{x.title}</Link></h3>
+                                            <p>{x.text}</p>
+                                        </div>
+											
+										)}									
+								)
+								} 
                             {/* </tbody> */}
                             {/* </table > */}
                         </div>
@@ -91,43 +96,7 @@ export default class Announcement extends Component {
             </div>
                 </div>
             )
-        } else {
-
-
-
-            return (
-                <div>
-                    <MainLayout />
-                   
-                    <div className="announcement">
-                        {/* <div className="announce" >
-                        <img className='announcementlogo' src={annoucementlogo} />
-                    </div > */}
-                        <div className="announceTable">
-                            {/* <table className='table'>
-                            <tbody>
-                                <tr> */}
-                            {/* <th>Image</th> <th> Content </th> <th > Date </th > </tr > */}
-                            {announcements.map((x, index) =>
-                                <div className='specialtr' key={index} onClick={console.log("SADAS")} >
-                                    <figure className="figuree"><img src={deneme} /></figure>
-                                    <h3><Link to={href + index}>{x.text}</Link></h3>
-                                    <p>Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı 1500'lerden beri endüstri standardı sahte metinler olarak kullanılmıştır. Beşyüz yıl boyunca varlığını sürdürmekle kalmamış, aynı zamanda pek değişmeden elektronik dizgiye de sıçramıştır. </p>
-                                </div>
-                            )
-                            }
-                            {/* </tbody> */}
-                            {/* </table > */}
-                        </div>
-
-                    </div>
-                    
-
-                    
-                </div>
-                
-                
-            )
+        
         }
-    }
+    
 }

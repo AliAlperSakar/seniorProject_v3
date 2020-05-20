@@ -41,19 +41,21 @@ export default class manageReservation extends Component {
             add: false,
             edit: true,
             delete: false,
-            announcements: [],
+            register: [],
             announcement: "",
             deleted: ""
-
+            
         }
-        this.btnClicked = this.btnClicked.bind();
-        this.getIndex = this.getIndex.bind();
+        this.btnClicked = this.btnClicked.bind(this);
+        this.getIndex = this.getIndex.bind(this);
+        this.approveRegister = this.approveRegister.bind(this);
+        this.deleteRegister = this.deleteRegister.bind(this);
     }
 
     componentDidMount() {
-        axios.get("http://localhost:8081/announcements")
+        axios.get("http://localhost:8082/register")
             .then(response => this.setState({
-                announcements: response.data
+                register: response.data
             }))
         console.log("Re-rendered");
 
@@ -65,15 +67,48 @@ export default class manageReservation extends Component {
         }
     }
 
+    approveRegister = (x) => {
+        console.log(x);
+        axios.post("http://localhost:8082/account", {
+            name: x.name,
+            surname: x.surname,
+            bilkentId: x.bilkentId,
+            email: x.email,
+            password: x.password,
+            status: x.status
+        })
+        .then(response => {
+            console.log(response);            
+        });       
+    }
+
+    deleteRegister = (x) => {
+        console.log(x);
+        axios.delete("http://localhost:8082/register",{ data: { id: x.bilkentId } });
+       
+    }
+
+    componentDidUpdate(){
+        axios.get("http://localhost:8082/register")
+            .then(response => this.setState({
+                register: response.data
+            }))
+        console.log("Re-rendered");
+    }
+
+
     btnClicked = (e) => {
         if (e.target.id == "add") {
             this.setState({ add: true, edit: false, delete: false })
         } else if (e.target.id == "edit") {
-            this.setState({ add: false, edit: true, delete: false })
+            this.setState({ add: false, edit: true, delete: false });
         } else {
             this.setState({ add: false, edit: false, delete: true })
         }
     }
+
+
+
 
     getIndex = (e) => {
         console.log(e.target.id)
@@ -103,7 +138,7 @@ export default class manageReservation extends Component {
         const add = this.state;
         // this.componentRendered()
         const href = '/announcement/manage/';
-        const { announcements } = this.state;
+        const { register } = this.state;
         const { match } = this.props
         console.log(this.state);
         return (
@@ -115,8 +150,25 @@ export default class manageReservation extends Component {
                     
                     <div className="contentmanacc">
                         <table className="table17" borderWidth="0">
+                        {register.map((x, index) =>
+									{
+										
+										return (
+                                            <tr>
+                                            <td>{x.bilkentId}<br></br>{x.name}<br></br>{x.surname}<br></br>{x.email}<br></br>{x.status}</td>
+                                            <td>
+                                                <Button primary size="medium" id="edit" value={this.state.edit} onClick={() => this.approveRegister(x)}>APPROVE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="check" /></Button>
+                                                <Button primary size="medium" id="delete" value={this.state.delete} onClick={() => this.deleteRegister(x)}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button>
+                                            </td>
 
-                            <tr>
+
+                                            </tr>
+											
+										)}									
+								)
+								}        
+                            
+                            {/* <tr>
                             <td>Bilkent Id:1<br></br> Name : Berkay <br></br> Surname : Kara <br></br> E-mail : bkkaa@gmail.com<br></br> Status : Academic</td>
                                 <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={this.btnClicked}>APPROVE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="check" /></Button>
                                     <Button primary size="medium" id="delete" value={this.state.delete} onClick={this.btnClicked}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
@@ -164,14 +216,7 @@ export default class manageReservation extends Component {
                                     <Button primary size="medium" id="delete" value={this.state.delete} onClick={this.btnClicked}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
 
 
-                            </tr>
-                            <tr>
-                            <td>Bilkent Id:1<br></br> Name : Berkay <br></br> Surname : Kara <br></br> E-mail : bkkaa@gmail.com<br></br> Status : Academic</td>
-                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={this.btnClicked}>APPROVE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="check" /></Button>
-                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={this.btnClicked}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
-
-
-                            </tr>
+                            </tr> */}
                             <tr>
                                 <td></td>
                             </tr>

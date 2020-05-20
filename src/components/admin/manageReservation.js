@@ -13,12 +13,32 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import deneme from '../../images/fotos/course.jpg';
 
+const initialState = {
+    date: '',
+    title: '',
+    content: '',
+    startdate: '',
+    enddate: '',
+    regdate: '',
+    add: false,
+    edit: true,
+    delete: false,
+    data: [],
+    announcement: "",
+    deleted: "",
+    sporttype:'',
+    isEdt:true,
+    second:'',
+    timeslot:'',
+    isEdit:false,
+    id:''
+}
 
 const sportoptions = [
-    { key: 'b', text: 'Basketball', value: 'basketball' },
+    { key: 't', text: 'Tennis', value: 'tennis' },
     { key: 'f', text: 'Football', value: 'football' },
-    { key: 'v', text: 'Volleyball', value: 'volleyball' },
-    { key: 'r', text: 'Racket Sports', value: 'racket' },
+    { key: 's', text: 'Squash', value: 'squash' },
+    { key: 'r', text: 'Pool', value: 'pool' },
 
 ]
 
@@ -31,79 +51,155 @@ const campusoption = [
 export default class manageReservation extends Component {
     constructor() {
         super()
-        this.state = {
-            date: '',
-            title: '',
-            content: '',
-            startdate: '',
-            enddate: '',
-            regdate: '',
-            add: false,
-            edit: true,
-            delete: false,
-            announcements: [],
-            announcement: "",
-            deleted: ""
+        this.state = initialState
+       
+        this.sportPicker = this.sportPicker.bind(this);
+        this.btnDelete = this.btnDelete.bind(this);
+        
 
-        }
-        this.btnClicked = this.btnClicked.bind();
-        this.getIndex = this.getIndex.bind();
+    }
+
+    reset() {
+        this.setState(initialState);
     }
 
     componentDidMount() {
-        axios.get("http://localhost:8081/announcements")
+        axios.get("http://localhost:8082/tennis")
             .then(response => this.setState({
-                announcements: response.data
+                data: response.data
             }))
         console.log("Re-rendered");
-
     }
 
-    handleChange = (event, { name, value }) => {
-        if (this.state.hasOwnProperty(name)) {
-            this.setState({ [name]: value });
-        }
-    }
-
-    btnClicked = (e) => {
-        if (e.target.id == "add") {
-            this.setState({ add: true, edit: false, delete: false })
-        } else if (e.target.id == "edit") {
-            this.setState({ add: false, edit: true, delete: false })
-        } else {
-            this.setState({ add: false, edit: false, delete: true })
-        }
-    }
-
-    getIndex = (e) => {
-        console.log(e.target.id)
-        if (this.state.add) {
-            //ADD
-        } else if (this.state.edit) {
-            //EDIT
-            axios.get("http://localhost:8081/announcements/" + e.target.id)
+    componentDidUpdate() {
+        if (!this.state.isEdt) {
+            axios.get("http://localhost:8082/"+this.state.sporttype)
                 .then(response => this.setState({
-                    announcement: response.data
+                    tournaments: response.data,
+                    isEdt:true
                 }))
-        } else if (this.state.delete) {
-            //DELETE
-            console.log("DELETE")
-            axios.delete("http://localhost:8081/announcements/" + e.target.id)
-                .then(response => {
-                    console.log(response.data);
-                })
         }
-        const { match } = this.props
-        var str = match.url.split('/');
-        var index = parseInt(str[3]);
-        console.log("AAAAAAAAAAAAAAAAAAAAAAAA");
+        console.log("Re-rendered");
+        console.log(this.state.isEdt)
+    }
+
+    sportPicker = (event, { name, value }) => {
+        this.reset()
+        console.log(value);
+        axios.get("http://localhost:8082/"+value)
+            .then(response => this.setState({
+                data: response.data,
+                sporttype:value
+            }))
+        // if (this.state.hasOwnProperty(name)) {
+        //     this.setState({ [name]: value });
+        // }
+    }
+
+    btnDelete = (x) =>{
+        const {sporttype} = this.state;
+        let url = '';
+        let obj = {}
+        let tag = ''
+        console.log(x);
+        if(sporttype == 'tennis'){
+            url = sporttype
+            obj= {id: x.id, courtNo:x.courtNo, available: x.available, time:x.time }
+            tag = x.courtNo
+        }else if(sporttype == 'football'){
+            url = sporttype
+            obj= x
+            tag = x.field
+        }else if(sporttype == 'squash'){
+            url = sporttype
+            obj= x
+            tag = x.courtNo
+        }else if(sporttype == "pool"){
+            url = sporttype
+            obj= x
+            tag = x.lane
+        }
+        console.log(obj);
+        axios.delete("http://localhost:8082/"+url, { data: { id: x.id }})
+            .then(response => {
+                if (response.status == 200)
+                    alert(tag + " reservation is deleted");
+            }
+            )
+        this.setState({
+            isEdt:false
+        })
+    }
+
+    btnAdd = () => {
+        const {sporttype} = this.state;
+        let obj = {}
+        if(sporttype == 'tennis'){
+            obj = {courtNo: this.state.second, time: this.state.timeslot, available:1 }
+        }else if (sporttype == 'football'){
+            obj = {field: this.state.second, time: this.state.timeslot, available:1 }
+        }else if (sporttype == 'squash') {
+            obj = {courtNo: this.state.second, time: this.state.timeslot, available:1 }
+        }else if (sporttype == 'pool') {
+            obj = {lane: this.state.second, time: this.state.timeslot, quota:this.state.quota }
+        }
+        axios.post("http://localhost:8082/"+sporttype, obj)
+            .then(response => {
+                if (response.status == 200)
+                    alert(this.state.sporttype + "reservation is added");
+            }
+            )
+    }
+
+    btnEdt = () => {
+        const {sporttype} = this.state;
+        let obj = {};
+        if(sporttype == 'tennis'){
+            obj = {id:this.state.id, courtNo: this.state.second, time: this.state.timeslot, available:1 }
+            
+        }else if(sporttype == 'football'){
+            obj = {id:this.state.id, field: this.state.second, time: this.state.timeslot, available:1 }
+        }else if(sporttype == 'squash') {
+            obj = {id: this.state.id, courtNo: this.state.second, time: this.state.timeslot, available:1 }
+        }else if(sporttype == 'pool') {
+            obj = {id:this.state.id, lane: this.state.second, time: this.state.timeslot, quota:this.state.quota }
+        }
+        axios.put("http://localhost:8082/"+sporttype, obj )
+            .then(response => {
+                if (response.status == 200)
+                    alert(this.state.sporttype + "reservation is edited");
+            }
+            )
+        
+            let edit = this.state.isEdt
+            this.setState({
+                isEdt:!edit
+            })
+    }
+
+    handleChange = (e,{name,value}) =>{
+        console.log(name,value);
+        this.setState({
+            [event.target.name]:value 
+        })
+    }
+
+    editBtn = (x) => {
+        console.log(x);
+        this.setState({
+            second:x.courtNo || x.field || x.lane,
+            timeslot: x.time ,
+            isEdit:true,
+            id:x.id,
+            quota:x.quota || 0
+        })
     }
 
     render() {
         const add = this.state;
         // this.componentRendered()
         const href = '/announcement/manage/';
-        const { announcements } = this.state;
+        const { data, sporttype, isEdit} = this.state;
         const { match } = this.props
         console.log(this.state);
         return (
@@ -115,58 +211,80 @@ export default class manageReservation extends Component {
                     <div className="contentmanres1">
                         <div className="manresfields">
                             <div className="manresselector1">
-                                <Form.Select fluid label='Sports' placeholder='Choose a Sport' onChange={this.handleChange}
+                                <Form.Select fluid label= 'Sports' placeholder='Choose a Sport' onChange={this.sportPicker}
                                     options={sportoptions} className="formmanres" />
                             </div>
                             <div className="manresselector2">
-                                <Form.Input fluid label='Field Name' placeholder='Enter field name' onChange={this.handleChange} className="formmanrestext" />
+                                <Form.Input fluid label={sporttype == 'tennis' ? 'Court' : (sporttype == 'pool' ? 'Lane' : (sporttype == 'squash' ? 'Court' : 'Field'))} placeholder={'Enter ' + sporttype == 'tennis' ? 'Court' : (sporttype == 'pool' ? 'Lane' : (sporttype == 'squash' ? 'Court' : 'Field'))} name='second' onChange={this.handleChange} value={this.state.second} className="formmanrestext" />
                             </div>
-                            <div className="manresselector3">
+                           {/* <div className="manresselector3">
                                 <Form.Select fluid label='Campus' placeholder='Choose a Campus' onChange={this.handleChange}
                                     options={campusoption} className="formmanrescampus" />
-                            </div>
+                            </div>} */}
                             <div className="manresselector4">
-                                <Form.Input fluid label='Time Slot' placeholder='Enter Time Slot' onChange={this.handleChange} className="formmanrestime" />
+                                <Form.Input fluid label='Time Slot' placeholder='Enter Time Slot' name='timeslot' value={this.state.timeslot} onChange={this.handleChange} className="formmanrestime" />
                             </div>
+                            {
+                                sporttype == 'pool' ? <div className="manresselector4">
+                                <Form.Input fluid label='Quota' placeholder='Enter Quota' name='quota' value={this.state.quota} onChange={this.handleChange} className="formmanrestime" />
+                            </div>: null}
 
                         </div>
 
                         <div className="manresbuttons">
-                            <Button primary size="medium" id="add" value={this.state.add} onClick={this.btnClicked}>ADD&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button>
-                            <Button primary size="medium" id="edit" value={this.state.edit} onClick={this.btnClicked}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
+                            {
+                                !isEdit ? <Button primary size="medium" id="add" value={this.state.add} onClick={this.btnAdd}>ADD&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="plus" /></Button> :
+                            <Button primary size="medium" id="edit" value={this.state.edit} onClick={this.btnEdt}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
+                            }
                         </div>
                     </div>
                     <div classname="manres1">
-                        <Form.Select fluid label='Sports' placeholder='Choose a Sport' onChange={this.handleChange}
+                        <Form.Select fluid label='Sports' placeholder='Choose a Sport' onChange={this.sportPicker}
                             options={sportoptions} className="formres" />
                     </div>
                     <div className="contentmanres">
                         <table className="table16" borderWidth="0">
-
+                        {
+                            sporttype == 'tennis' ? data.map((x)=>
                             <tr>
-                                <td>Id:1<br></br> Field : Mini Field 5x5 <br></br>Campus : Main <br></br>TimeSlot : 15:30 / 16:30</td>
-                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={this.btnClicked}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
-                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={this.btnClicked}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
-
-
-                            </tr>
+                                <td>Id: {x.id}<br></br> Court No : {x.courtNo} <br></br>Availability : {x.available} <br></br>Time Slot : {x.time}</td>
+                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={() => this.editBtn(x)}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
+                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={() => this.btnDelete(x)}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
+                            </tr> ) : <tr></tr>
+                        }
+                        {
+                            sporttype == 'football' ? data.map((x)=>
                             <tr>
-                            <td>Id:1<br></br> Field : Mini Field 5x5 <br></br>Campus : Main <br></br>TimeSlot : 15:30 / 16:30</td>
-                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={this.btnClicked}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
-                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={this.btnClicked}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
-
-
-                            </tr>
+                                <td>Id: {x.id}<br></br> Field : {x.field} <br></br>Availability : {x.available} <br></br>Time Slot : {x.time}</td>
+                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={() => this.editBtn(x)}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
+                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={() => this.btnDelete(x)}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
+                            </tr> ) : <tr></tr>
+                        }
+                        {
+                            sporttype == 'squash' ? data.map((x)=>
                             <tr>
-                            <td>Id:1<br></br> Field : Mini Field 5x5 <br></br>Campus : Main <br></br>TimeSlot : 15:30 / 16:30</td>
-                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={this.btnClicked}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
-                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={this.btnClicked}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
-
-
-                            </tr>
+                                <td>Id: {x.id}<br></br> Court No : {x.courtNo} <br></br>Availability : {x.available} <br></br>Time Slot: {x.time}</td>
+                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={() => this.editBtn(x)}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
+                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={() => this.btnDelete(x)}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
+                            </tr> ) : <tr></tr>
+                        }
+                        {
+                            sporttype == 'pool' ? data.map((x)=>
                             <tr>
-                                <td></td>
-                            </tr>
+                                <td>Id: {x.id}<br></br> Lane : {x.lane} <br></br>Quota : {x.quota} <br></br>Time Slot: {x.time}</td>
+                                <td><Button primary size="medium" id="edit" value={this.state.edit} onClick={() => this.editBtn(x)}>EDIT&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="edit outline" /></Button>
+                                    <Button primary size="medium" id="delete" value={this.state.delete} onClick={() => this.btnDelete(x)}>DELETE&nbsp;&nbsp;&nbsp;&nbsp;<Icon style={{ margin: "0px" }} name="delete" /></Button></td>
+                            </tr> ) : <tr></tr>
+                        }
+                        {
+                            sporttype == '' ? data.map((x)=>
+                            <tr>
+                                <td>Id: {x.id}<br></br> Court No : {x.courtNo} <br></br>Availability : {x.available} <br></br>Time Slot : {x.time}</td>
+                               
+                            </tr> ) : <tr></tr>
+                        }
+                         
+                            
 
 
 

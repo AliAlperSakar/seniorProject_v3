@@ -94,7 +94,7 @@ class Register extends Component {
     handleSubmit(event) {
         let isValid = this.validate();
         if (!isValid) {
-            console.log("NICE");
+            console.log("There is a problem about entries");
         } else {
             const { history } = this.props;
             const user = {
@@ -105,14 +105,7 @@ class Register extends Component {
                 password: this.state.Password,
                 status:this.state.status
             }
-            axios.post("http://localhost:8081/register", {
-                name: this.state.Name,
-                surname: this.state.Surname,
-                bilkentId: this.state.Id,
-                email: this.state.Email,
-                password: this.state.Password,
-                status:this.state.status
-            })
+            axios.post("http://localhost:8082/register", user)
                 .then(res => {
                     if (res.status === 200) {
                         console.log(res);

@@ -13,7 +13,7 @@ function ElementList(props) {
     const element = props.elements;
     const listItems = element.map((element) =>
         <li key={element.toLowerCase()}>
-            <Link to={"/" +element.toLowerCase()=="home" ?"homepage":element.toLowerCase() } className="a">{element}</Link>
+            <Link to={"" + element.toLowerCase()== "home" ?"homepage":element.toLowerCase() } className="a">{element}</Link>
             {
                 element.toLowerCase() == "tournaments" ?
                     // <Icon name="angle down" /> +
@@ -36,20 +36,20 @@ const dropdown = (
     <ul className="dropdown">
         <li>
             {/* <Icon name="futbol" /> */}
-            <a href="/Tournaments/Football">Football Tournament</a>
+            <Link to="/tournaments/football">Football Tournament</Link>
         </li>
         <li>
             {/* <Icon name="basketball ball" />  */}
-            <a href="/tournaments/football">Basketball Tournament</a>
+            <Link to="/tournaments/basketball">Basketball Tournament</Link>
 
         </li>
         <li>
             {/* <Icon name="volleyball ball" /> */}
-            <a href="/tournaments/football">Volleyball Tournament</a>
+            <Link to="/tournaments/volleyball">Volleyball Tournament</Link>
         </li>
         <li>
             {/* <Icon name="volleyball ball" /> */}
-            <a href="/tournaments/football">Racket Sports Tournament</a>
+            <Link to="/tournaments/racketsports">Racket Sports Tournament</Link>
         </li>
 
 
@@ -69,21 +69,22 @@ class MainLayout extends Component {
     }
 
     componentDidMount() {
-        const status = store.get("status");
+        const user = store.get("user");
+        console.log(user);
         this.setState({
-            status: status,
-            tag: status
+            status: user.status,
+            tag: user.status
         })
     }
 
     click(){
-        const is=this.state.isOn
+        const is = this.state.isOn
         console.log("calisti")
         this.setState({isOn:!is})
     }
     render() {
-        const { status, tag } = this.state;
-        console.log(this.state.isOn)
+        const { status, tag, isOn } = this.state;
+        // console.log(this.state)
         return (
             <div>
                 <div className="megamenu">
@@ -92,7 +93,7 @@ class MainLayout extends Component {
                         
                         <ElementList elements={elements} />
                         <Button onClick={this.click} className="myAccount">{tag}</Button>
-                       {this.state.isOn == true ?
+                       {this.state.status == "admin" && isOn ?
                             <div className="adminPanel">
                                 <ul>
                                     <Link to="/announcement/manage"><li>Manage Announcements</li></Link>

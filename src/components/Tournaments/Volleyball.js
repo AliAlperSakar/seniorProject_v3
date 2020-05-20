@@ -7,10 +7,8 @@ import { Form, Divider, Button, Icon } from 'semantic-ui-react'
 
 
 const campusvolleyball = [
-    { key: 'm', text: 'Main Campus', value: 'mainvt' },
-    { key: 'e', text: 'East Campus', value: 'eastvt' },
-   
-
+    { key: 'm', text: 'Main Campus', value: 'main' },
+    { key: 'e', text: 'East Campus', value: 'east' }
 ]
 
 
@@ -18,19 +16,49 @@ export default class Volleyball extends Component {
     constructor() {
         super();
         this.state = {
-            volleyball: []
+            tournaments: [],
+            selectedCampus: []
         }
     }
     componentDidMount() {
-        axios.get("http://localhost:8081/tournaments/volleyball")
-            .then(response => this.setState({
-                volleyball: response.data
-            }))
+        axios.get("http://localhost:8082/tournaments")
+            .then(response =>
+                this.setState({
+                    tournaments: response.data
+                }))
 
     }
+
+    filter = () => {
+        const { tournaments } = this.state;
+        let arr = []
+        tournaments.map((x) => {
+            if (x.name == 'Volleyball') {
+                arr.push(x);
+                console.log(x);
+            }
+        })
+        return arr
+    }
+
+    handleChange = (e, data) => {
+        console.log(data.value);
+        const { tournaments, selectedCampus } = this.state;
+        let arr = [];
+        tournaments.map((x) => {
+            if (x.name == 'Volleyball' && x.campus.toLowerCase() == data.value) {
+                arr.push(x);
+            }
+        })
+        this.setState({
+            selectedCampus: arr
+        })
+    }
+
     render() {
-        console.log(this.state.volleyball);
-        const {volleyball} = this.state
+        const { tournaments, selectedCampus } = this.state;
+        let arr = this.filter();
+        console.log(this.state);
         return (
             <div>
                 <MainLayout />
@@ -58,18 +86,22 @@ export default class Volleyball extends Component {
                     
                 </tr>
                 
-                <tr>
-                    <td>{this.state.volleyball.map((x)=>
-            <p> {x.name} Tournament </p>
-        )}</td>
-                    <td>{this.state.volleyball.map((x)=>
-            <p>{x.campus} Campus</p>)}</td>
-                    <td>{this.state.volleyball.map((x)=>
-            <p> {x.teamquota} </p>
+                {selectedCampus.length == 0 ? arr.map((x)=>
+                                <tr>
+                                    <td><p> {x.name} Tournament </p></td>
+                                    <td><p> {x.campus} Campus </p></td>
+                                    <td><p> {x.teamquota}</p></td>
+                                </tr>
 
-            )}  </td>
-            
-                </tr>
+                                ) : selectedCampus.map((x)=>
+                                <tr>
+                                    <td><p> {x.name} Tournament </p></td>
+                                    <td><p> {x.campus} Campus </p></td>
+                                    <td><p> {x.teamquota}</p></td>
+                                </tr>
+
+                                )
+                                }
             
                
            

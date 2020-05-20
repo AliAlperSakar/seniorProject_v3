@@ -48,21 +48,21 @@ class Tournament extends Component {
                 <div className="imgbackground">
             <div className="tournamentbg">
                 <div className="contenttournament1">
-               <a href="/tournaments/basketball"> <img className='basketbol' src={basketbol} />
-                 <br></br> Basketball Tournament</a>
+               <Link to="/tournaments/basketball"> <img className='basketbol' src={basketbol} />
+                 <br></br> Basketball Tournament</Link>
                 
 
                 </div>
 
                 <div className="contenttournament2">
                 
-                 <a href="/tournaments/football"><img className='futbol' src={futbol} />
-                <br></br> Football Tournament</a>
+                <Link to="/tournaments/football"><img className='futbol' src={futbol} />
+                <br></br> Football Tournament</Link>
                 </div>
 
                 <div className="contenttournament3">
-                <a href="/tournaments/volleyball"><img className='voleybol' src={voleybol} />
-                <br></br>Volleyball Tournament</a>
+                <Link to="/tournaments/volleyball"><img className='voleybol' src={voleybol} />
+                <br></br>Volleyball Tournament</Link>
 
                 </div>
 
