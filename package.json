@@ -20,7 +20,7 @@
   "author": "Ali Alper Sakar",
   "license": "UNLICENSED",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "react": "^16.12.0",
     "react-awesome-slider": "^4.0.2",
     "react-dom": "^16.12.0",
